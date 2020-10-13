@@ -1,0 +1,53 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Angular studing. Framework outside and inside",
+      "creationDate": "2020-12-15",
+      "duration": "88",
+      "description": "Learn about where you can find course description, what information thay include, how they work and details about various components about course description. Course description report information about a university of college`s classes. They are published both in course catalogs the outline degree requirements and in course schedules that contain for all courses offered during",
+      "topRated": true,
+      "authors": ["Sebastiano Ebanies", "Viskas Oldevichus"]
+    },
+    {
+      "id": 2,
+      "title": "React. The most flexible framework",
+      "creationDate": "2019-12-08",
+      "duration": "134",
+      "description": "Learn about where you can find course description, what information thay include, how they work and details about various components about course description. Course description report information about a university of college`s classes. They are published both in course catalogs the outline degree requirements and in course schedules that contain for all courses offered during",
+      "topRated": false,
+      "authors": ["Viskas Oldevichus"]
+    },
+    {
+      "id": 3,
+      "title": "Vue. This new step in front end.",
+      "creationDate": "2020-04-20",
+      "duration": "110",
+      "description": "Learn about where you can find course description, what information thay include, how they work and details about various components about course description. Course description report information about a university of college`s classes. They are published both in course catalogs the outline degree requirements and in course schedules that contain for all courses offered during",
+      "topRated": true,
+      "authors": ["Viskas Oldevichus", "Brendano Resticovicos"]
+    },
+    {
+      "id": 4,
+      "title": "regergergergerg",
+      "creationDate": "2019-12-09",
+      "duration": 44,
+      "description": "ergergergerger",
+      "topRated": false,
+      "authors": ["Viskas Oldevichus", "Brendano Resticovicos"]
+    }
+  ],
+  "logIn": {
+    "email": "ree-45@retop.uo",
+    "password": "111111"
+  },
+  "authors": [
+    "Silvestor Stallone",
+    "Viskas Oldevichus",
+    "Sebastiano Ebanies",
+    "Carlito Musies",
+    "John Abraham Ernand",
+    "Brendano Resticovicos",
+    "Edurenio Alterionio"
+  ]
+}
