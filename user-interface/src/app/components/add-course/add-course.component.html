@@ -1,0 +1,97 @@
+<app-breadcrumbs [courseTitle]="course.title"></app-breadcrumbs>
+<form #f="ngForm" class="form" (ngSubmit)="handleSubmit()">
+
+  <div class="form__field">
+    <div class="form__field-title-wrapper">
+      <p>{{ "PAGES.ADD_COURSE.TITLE.TITLE" | translate }}</p>
+      <app-validation-messages
+        *ngIf="courseTitle.errors?.required && courseTitle.touched"
+        [messages]="[validate()]"
+      ></app-validation-messages>
+    </div>
+    <input
+      type="text"
+      [(ngModel)]="course.title"
+      placeholder="{{ 'PAGES.ADD_COURSE.TITLE.PLACEHOLDER' | translate }}"
+      required
+      maxlength="50"
+      name="title"
+      #courseTitle="ngModel"
+      [ngClass]="{ error: courseTitle.errors?.required && courseTitle.touched }"
+    />
+  </div>
+
+  <div class="form__field">
+    <div class="form__field-title-wrapper">
+      <p>{{ "PAGES.ADD_COURSE.DESCRIPTION.TITLE" | translate }}</p>
+      <app-validation-messages
+        *ngIf="courseDescription.errors?.required && courseDescription.touched"
+        [messages]="[validate()]"
+      ></app-validation-messages>
+    </div>
+    <textarea
+      [(ngModel)]="course.description"
+      placeholder="{{ 'PAGES.ADD_COURSE.DESCRIPTION.PLACEHOLDER' | translate }}"
+      maxlength="500"
+      name="description"
+      required
+      #courseDescription="ngModel"
+      [ngClass]="{ error: courseDescription.errors?.required && courseDescription.touched }"
+    ></textarea>
+  </div>
+
+  <app-input-date
+    [(ngModel)]="course.creationDate"
+    name="creationDate"
+    validateValue
+    [required]="true"
+    #creationDate="ngModel"
+    [isError]="creationDate.errors?.messages && creationDate.touched"
+  >
+    <app-validation-messages
+      *ngIf="creationDate.touched"
+      [messages]="translateMessages(creationDate.errors?.messages)"
+    ></app-validation-messages>
+  </app-input-date>
+
+  <app-input-duration
+    [(ngModel)]="course.duration"
+    name="duration"
+    validateValue
+    [required]="true"
+    #duration="ngModel"
+    [isError]="duration.errors?.messages && duration.touched"
+  >
+    <app-validation-messages
+      *ngIf="duration.touched"
+      [messages]="translateMessages(duration.errors?.messages)"
+    ></app-validation-messages>
+  </app-input-duration>
+
+  <app-authors
+    [(ngModel)]="course.authors"
+    name="authors"
+    [required]="true"
+    validateValue
+    #authors="ngModel"
+    [isError]="authors.errors?.messages && authors.touched"
+  >
+    <app-validation-messages
+      *ngIf="authors.touched"
+      [messages]="translateMessages(authors.errors?.messages)"
+    ></app-validation-messages>
+  </app-authors>
+
+  <div class="form__actions">
+    <button
+      class="form__submit"
+      [disabled]="!f.valid"
+      [ngClass]="{ disabled: !f.valid, enabled: f.valid }"
+      type="submit"
+    >{{ "PAGES.ADD_COURSE.SAVE" | translate }}</button>
+    <button
+      class="form__cancel enabled"
+      (click)="handleCansel()"
+    >{{ "PAGES.ADD_COURSE.CANCEL" | translate }}</button>
+  </div>
+</form>

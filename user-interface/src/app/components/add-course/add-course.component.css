@@ -1,0 +1,78 @@
+.form {
+  width: 60%;
+  margin: 0 auto;
+  height: '100vh';
+  padding-top: 10px;
+}
+
+.form__field {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.form__field-title-wrapper {
+  display: flex;
+}
+
+.form__field-title-wrapper p {
+  font: bold 15px Arial;
+  margin: 10px 0;
+}
+
+.error {
+  border: 1px solid red;
+}
+
+.form__field > input {
+  width: 95%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form__field > span {
+  margin-left: 10px;
+}
+
+.form__field > .limited-width {
+  width: 15%;
+}
+
+.form__field > textarea {
+  width: 95%;
+  padding: 10px 10px;
+  height: 150px;
+  border-radius: 5px;
+  outline: none;
+  font: 400 13px Arial;
+}
+
+.form__actions {
+  margin-top: 20px;
+}
+
+.form__actions > button {
+  width: 100px;
+  padding: 8px 10px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.form__cancel {
+  margin-left: 10px;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.disabled {
+  background-color: grey;
+}
+
+.enabled {
+  background-color: #9ecc9e;
+}

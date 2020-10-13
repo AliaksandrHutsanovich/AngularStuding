@@ -1,0 +1,12 @@
+<section class="search-section">
+  <form [formGroup]="form" class="search-section__wraper">
+    <input
+      type="search"
+      class="search-section__input"
+      placeholder="{{ 'PAGES.COURSES.SEARCH.PLACEHOLDER' | translate }}"
+      formControlName="search"
+      #searchInput
+    />
+    <!-- <button class="search-section__button" (click)="handleClick()">Search</button> -->
+  </form>
+</section>

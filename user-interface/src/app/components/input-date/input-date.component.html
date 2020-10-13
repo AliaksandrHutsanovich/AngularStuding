@@ -1,0 +1,14 @@
+<div class="form__field">
+  <div class="form__field-title-wrapper">
+    <p>{{ "PAGES.ADD_COURSE.DATE.TITLE" | translate }}</p>
+    <ng-content></ng-content>
+  </div>
+  <input
+    [(ngModel)]="value"
+    class="limited-width"
+    type="date"
+    placeholder="{{ 'PAGES.ADD_COURSE.DATE.PLACEHOLDER' | translate }}"
+    [ngClass]="{ error: isError }"
+    (blur)="handleBlur()"
+  />
+</div>

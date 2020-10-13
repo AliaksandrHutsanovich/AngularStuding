@@ -1,0 +1,17 @@
+<div class="list-items-section">
+  <button class="list-items-section__button add-button" (click)="handleAddCourse()">
+    <img src="assets/images/add-icon.png" alt="add icon">
+    <p>{{ "PAGES.COURSES.BUTTON.ADD_COURSE" | translate }}</p>
+  </button>
+  <app-no-data *ngIf="!searchedCourses.length"></app-no-data>
+  <div *ngIf="searchedCourses.length" class="list-items-section__list">
+    <app-course
+      *ngFor="let course of searchedCourses | orderBy: 'creationDate'"
+      (onClicked)="onClicked($event)"
+      [course]="course"
+    ></app-course>
+    <button (click)="handleLoadMore()" class="list-items-section__button load-button">
+      {{ "PAGES.COURSES.LOAD_MORE" | translate }}
+    </button>
+  </div>
+</div>

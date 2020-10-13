@@ -1,0 +1,21 @@
+.search-section {
+  padding: 20px 0;
+}
+
+.search-section__wraper {
+  padding: 0 30px;
+}
+
+.search-section__input {
+  padding: 10px;
+  width: 450px;
+  border: 1px solid #dcd4d4;
+}
+
+.search-section__button {
+  margin-left: 5px;
+  padding: 10px 20px;
+  background-color: #bcce6c;
+  color: white;
+  cursor: pointer;
+}

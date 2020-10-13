@@ -1,0 +1,36 @@
+.form__field {
+  width: 100%;
+  padding: 10px 0;
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.form__field > .limited-width {
+  width: 15%;
+}
+
+.form__field > input {
+  width: 95%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form__field-title-wrapper {
+  display: flex;
+}
+
+.form__field-title-wrapper > p {
+  font: bold 15px Arial;
+  margin: 10px 0;
+}
+
+.form__field > span {
+  margin-left: 10px;
+}
+
+.error {
+  border: 1px solid red;
+}
