@@ -1,4 +1,0 @@
-{
-  "/courses\\?start=:start&count=:count&search=:search": "/courses?_start=:start&_limit=:count&q=:search",
-  "/courses\\?start=:start&count=:count": "/courses?_start=:start&_limit=:count"
-}

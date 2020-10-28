@@ -1,1 +1,0 @@
- json-server --watch db.json --middlewares ./auth.js --routes routes.json
