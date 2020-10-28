@@ -1,0 +1,77 @@
+{
+  "PAGES": {
+    "LOGIN": {
+      "TITLE": "Войти",
+      "FORM_FIELDS": {
+        "EMAIL": {
+          "TITLE": "Почта",
+          "PLACEHOLDER": "Введите почту"
+        },
+        "PASSWORD": {
+          "TITLE": "Пароль",
+          "PLACEHOLDER": "Введите пароль"
+        }
+      },
+      "LINK": "Забыли пароль?",
+      "SUBMIT": "Войти",
+      "REQUIRED": "*обязательно",
+      "VALIDATION_MEASSAGES": {
+        "REQUIRED": "обязательно к заполнению",
+        "EMAIL": "имеет некорректное значение"
+      }
+    },
+    "COURSES": {
+      "HEADER": {
+        "LOGO": "ВИДЕО КУРС",
+        "LOG_OFF": "Выйти",
+        "LANGS": {
+          "ENGLISH": "Английский",
+          "RUSSIAN": "Русский"
+        }
+      },
+      "SEARCH": {
+        "PLACEHOLDER": "Найти курс"
+      },
+      "BUTTON": {
+        "ADD_COURSE": "Добавить курс"
+      },
+      "COURSE": {
+        "EDIT": "Редактировать",
+        "DELETE": "Удалить"
+      },
+      "LOAD_MORE": "ЗАГРУЗИТЬ БОЛЬШЕ"
+    },
+    "ADD_COURSE": {
+      "TITLE": {
+        "TITLE": "Название:",
+        "PLACEHOLDER": "введите название курса"
+      },
+      "DESCRIPTION": {
+        "TITLE": "Описание:",
+        "PLACEHOLDER": "введите описание курса"
+      },
+      "DATE": {
+        "TITLE": "Дата:",
+        "PLACEHOLDER": "введите дату курса"
+      },
+      "DURATION": {
+        "TITLE": "Продолжительность:",
+        "PLACEHOLDER": "введите продолжительность курса"
+      },
+      "AUTHORS": {
+        "TITLE": "Авторы:"
+      },
+      "SAVE": "Сохранить",
+      "CANCEL": "Выйти",
+      "VALIDATION_MESSAGES": {
+        "REQIURED": "обязательно к заполнению",
+        "AUTHORS_REQUIRED": "Как минимум один должен быть выбран"
+      }
+    },
+    "CONFIRM_DELETE_DIALOG": {
+      "QUESTION": "Вы действительно хотите удалить этот курс?",
+      "YES": "Да",
+      "NO": "Нет" 
+    }
+  }
+}
