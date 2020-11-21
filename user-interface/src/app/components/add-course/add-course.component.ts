@@ -41,7 +41,7 @@ export class AddCourseComponent implements OnInit {
     this.subjectToRedirect = this.coursesService.getSubjectToRedirect();
     this.subjectToRedirect.subscribe(
       () => {
-        this.handleCansel();
+        this.handleCancel();
         this.loadService.updateShow(false);
       },
     );
@@ -62,7 +62,7 @@ export class AddCourseComponent implements OnInit {
     }
   }
 
-  handleCansel(): void {
+  handleCancel(): void {
     this.router.navigate(['courses']);
   }
 
