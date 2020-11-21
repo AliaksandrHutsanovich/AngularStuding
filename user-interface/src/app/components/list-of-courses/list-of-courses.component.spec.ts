@@ -8,13 +8,11 @@ import { Router } from '@angular/router';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { Course } from '../../entities/course';
+import { Course } from '../../entities';
 
 import { ListOfCoursesComponent } from './list-of-courses.component';
-import { SearchPipe } from '../../pipes/search';
-import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
-import { CoursesService } from '../../services/courses';
-import { LoadService } from '../../services/load';
+import { SearchPipe, OrderByPipe } from '../../pipes';
+import { CoursesService, LoadService } from '../../services';
 
 @Component({
   template: `

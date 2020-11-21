@@ -13,9 +13,8 @@ import {
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Store, select } from '@ngrx/store';
-import { Course } from '../../entities/course';
-import { CoursesService } from '../../services/courses';
-import { LoadService } from '../../services/load';
+import { Course } from '../../entities';
+import { CoursesService, LoadService } from '../../services';
 import { ConfirmDialogComponent } from '../confirm-dialog';
 import { Subject } from 'rxjs';
 import { makeCoursesRequest } from 'src/app/actions';

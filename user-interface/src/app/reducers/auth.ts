@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { EmailState } from 'src/app/interfaces/state';
-import { User } from '../entities/user';
+import { EmailState } from 'src/app/interfaces';
+import { User } from '../entities';
 import { addUserEmailToStore, removeUserEmailFromStore } from 'src/app/actions';
 
 const initialState: EmailState = {

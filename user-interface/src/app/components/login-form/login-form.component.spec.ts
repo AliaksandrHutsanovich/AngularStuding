@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { LoginFormComponent } from './login-form.component';
-import { AuthService } from '../../services/auth';
-import { User } from '../../entities/user';
+import { AuthService } from '../../services';
+import { User } from '../../entities';
 
 describe('LoginFormComponent', () => {
   const user = new User(

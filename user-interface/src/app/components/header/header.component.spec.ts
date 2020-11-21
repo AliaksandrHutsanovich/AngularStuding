@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth';
+import { AuthService } from '../../services';
 import { Router } from '@angular/router';
-import { User } from '../../entities/user';
+import { User } from '../../entities';
 
 import { HeaderComponent } from './header.component';
 import { Store } from '@ngrx/store';

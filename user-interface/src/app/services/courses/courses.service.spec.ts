@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 
 import { CoursesService } from './courses.service';
-import { Course } from 'src/app/entities/course';
+import { Course } from 'src/app/entities';
 
 describe('CoursesService', () => {
   let service: CoursesService;
   let httpSpy;
-  
+
   beforeEach(() => {
     httpSpy = jasmine.createSpyObj('HttpClient', [
       'post',

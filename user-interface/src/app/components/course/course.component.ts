@@ -7,7 +7,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Course } from '../../entities/course';
+import { Course } from '../../entities';
 
 @Component({
   selector: 'app-course',

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoadingBlockComponent } from './loading-block.component';
-import { LoadService } from '../../services/load';
+import { LoadService } from '../../services';
 
 describe('LoadingBlockComponent', () => {
   let component: LoadingBlockComponent;

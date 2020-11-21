@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
-import { User } from 'src/app/entities/user';
-import { Course } from 'src/app/entities/course';
+import { Course, User } from 'src/app/entities';
 import { Store } from '@ngrx/store';
 
 describe('AuthService', () => {

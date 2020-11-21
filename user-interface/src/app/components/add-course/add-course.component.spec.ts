@@ -3,10 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { AddCourseComponent } from './add-course.component';
-import { TransformTimePipe } from '../../pipes/transform-time';
-import { CoursesService } from '../../services/courses';
-import { LoadService } from '../../services/load';
-import { Course } from 'src/app/entities/course';
+import { TransformTimePipe } from '../../pipes';
+import { CoursesService, LoadService } from '../../services';
+import { Course } from 'src/app/entities';
 import { of } from 'rxjs';
 
 describe('AddCourseComponent', () => {

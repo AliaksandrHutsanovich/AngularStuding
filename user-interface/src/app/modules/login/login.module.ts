@@ -3,14 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { LoginPageComponent } from '../../components/login-page';
-import { BreadcrumbsComponent } from '../../components/breadcrumbs';
-import { AuthService } from '../../services/auth';
-import { HeaderComponent } from '../../components/header';
-import { FooterComponent } from '../../components/footer';
-import { LoginFormComponent } from '../../components/login-form';
+import {
+  LoginPageComponent,
+  BreadcrumbsComponent,
+  HeaderComponent,
+  FooterComponent,
+  LoginFormComponent,
+  ValidationMessagesComponent,
+} from 'src/app/components';
+import { AuthService } from '../../services';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ValidationMessagesComponent } from 'src/app/components/validation-messages/validation-messages.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 

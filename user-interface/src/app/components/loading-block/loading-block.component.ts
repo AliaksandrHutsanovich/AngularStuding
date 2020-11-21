@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadService } from '../../services/load';
+import { LoadService } from '../../services';
 import { Subject } from 'rxjs';
 
 @Component({

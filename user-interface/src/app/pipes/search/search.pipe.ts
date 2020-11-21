@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Course } from '../../entities/course';
+import { Course } from '../../entities';
 
 @Pipe({
   name: 'search',

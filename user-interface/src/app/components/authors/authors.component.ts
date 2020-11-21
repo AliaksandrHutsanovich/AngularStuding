@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterContentChecked, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { AuthorsService } from 'src/app/services/authors/authors.service';
+import { AuthorsService } from 'src/app/services';
 
 import { ValueAccessorBase } from 'src/app/classes/value-accessor-base.class';
 

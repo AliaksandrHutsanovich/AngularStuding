@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth';
+import { AuthService } from '../../services';
 
 import { LoginPageComponent } from './login-page.component';
 

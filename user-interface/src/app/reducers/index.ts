@@ -6,7 +6,7 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
-import { EmailState, CoursesState } from 'src/app/interfaces/state';
+import { EmailState, CoursesState } from 'src/app/interfaces';
 import { authReducer } from './auth';
 import { coursesReducer } from './courses';
 

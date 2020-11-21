@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '../entities/user';
-import { Course } from '../entities/course';
+import { Course, User } from '../entities';
 
 export const addUserEmailToStore = createAction(
   'add_userEmail_to_store',
