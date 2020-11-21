@@ -7,7 +7,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from '../services/auth';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -20,5 +20,5 @@ export class AuthGuard implements CanActivate {
     const loginPageUrlTree = this.router.parseUrl('login');
     return of(this.auth.isAuthenticated() ? true : loginPageUrlTree);
   }
-  
+
 }

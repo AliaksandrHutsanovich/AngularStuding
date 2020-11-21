@@ -11,10 +11,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Course } from '../../entities/course';
 
 import { ListOfCoursesComponent } from './list-of-courses.component';
-import { SearchPipe } from '../../pipes/search/search.pipe';
+import { SearchPipe } from '../../pipes/search';
 import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
-import { CoursesService } from '../../services/courses/courses.service';
-import { LoadService } from '../../services/load/load.service';
+import { CoursesService } from '../../services/courses';
+import { LoadService } from '../../services/load';
 
 @Component({
   template: `
@@ -41,7 +41,7 @@ describe('ListOfCoursesComponent', () => {
     [],
   );
   const courses = [course];
-  
+
   const spy = jasmine.createSpy();
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
   routerSpy.navigate.and.callFake(() => {
@@ -99,7 +99,7 @@ describe('ListOfCoursesComponent', () => {
           provide: MatDialog,
           useValue: mockDialog,
         },
-        { 
+        {
           provide: Router,
           useValue: routerSpy,
         },

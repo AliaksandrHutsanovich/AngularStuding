@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { LoginFormComponent } from './login-form.component';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth';
 import { User } from '../../entities/user';
 
 describe('LoginFormComponent', () => {

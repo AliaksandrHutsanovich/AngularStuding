@@ -1,10 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth';
 import { Router } from '@angular/router';
 import { User } from '../../entities/user';
 
 import { HeaderComponent } from './header.component';
+import { Store } from '@ngrx/store';
 
 describe('HeaderComponent', () => {
   const user = new User(
@@ -15,6 +16,7 @@ describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   let httpSpy;
+  let storeSpy;
   const subscribe = (fn) => {
     fn(user);
   };
@@ -33,6 +35,9 @@ describe('HeaderComponent', () => {
       'delete',
     ]);
     httpSpy.get.and.returnValue({ subscribe });
+    storeSpy = jasmine.createSpyObj('Store', [
+      'dispatch',
+    ]);
 
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
@@ -40,6 +45,7 @@ describe('HeaderComponent', () => {
         AuthService,
         { provide: Router, useValue: routerSpy },
         { provide: HttpClient, useValue: httpSpy },
+        { provide: Store, useValue: storeSpy },
       ],
     })
     .compileComponents();

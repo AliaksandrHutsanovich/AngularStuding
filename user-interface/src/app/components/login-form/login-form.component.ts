@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router} from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth';
 import { User } from '../../entities/user';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -35,7 +35,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   get f() { return this.form.controls; }

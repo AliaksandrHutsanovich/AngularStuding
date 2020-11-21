@@ -4,7 +4,7 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { map, switchMap } from 'rxjs/operators';
 import { makeCoursesRequest, loadCourses, reLoadCourses } from 'src/app/actions';
-import { CoursesService } from 'src/app/services/courses/courses.service';
+import { CoursesService } from 'src/app/services/courses';
 import { Course } from 'src/app/entities/course';
 
 import { State } from 'src/app/reducers';

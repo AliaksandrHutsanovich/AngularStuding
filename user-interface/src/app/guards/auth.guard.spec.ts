@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { AuthGuard } from './auth.guard';
-import { AuthService } from '../services/auth/auth.service';
+import { AuthService } from '../services/auth';
 
 describe('AuthGuard', () => {
   let guard: AuthGuard;

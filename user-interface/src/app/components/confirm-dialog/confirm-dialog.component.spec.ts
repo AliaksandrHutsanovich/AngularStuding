@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-import { CoursesService } from '../../services/courses/courses.service';
+import { CoursesService } from '../../services/courses';
 
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 

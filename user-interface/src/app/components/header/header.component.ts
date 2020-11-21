@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../services/auth';
 import { User } from '../../entities/user';
 import { TranslateService } from '@ngx-translate/core';
 

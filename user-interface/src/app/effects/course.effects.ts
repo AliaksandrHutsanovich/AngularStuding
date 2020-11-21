@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs/operators';
 import { makeCourseRequest } from 'src/app/actions';
-import { CoursesService } from 'src/app/services/courses/courses.service';
+import { CoursesService } from 'src/app/services/courses';
 import { Course } from 'src/app/entities/course';
 
 @Injectable()

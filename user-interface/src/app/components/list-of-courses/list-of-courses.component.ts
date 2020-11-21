@@ -14,9 +14,9 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Store, select } from '@ngrx/store';
 import { Course } from '../../entities/course';
-import { CoursesService } from '../../services/courses/courses.service';
-import { LoadService } from '../../services/load/load.service';
-import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { CoursesService } from '../../services/courses';
+import { LoadService } from '../../services/load';
+import { ConfirmDialogComponent } from '../confirm-dialog';
 import { Subject } from 'rxjs';
 import { makeCoursesRequest } from 'src/app/actions';
 import { State } from 'src/app/reducers';
@@ -91,7 +91,7 @@ export class ListOfCoursesComponent implements OnInit,
     this.loadService.updateShow(true);
     this.subjectForCourses = this.coursesService.getSubjectForCourses();
     this.subjectForCourses.subscribe(this.getCourses);
-    
+
   }
 
   ngOnChanges(): void {

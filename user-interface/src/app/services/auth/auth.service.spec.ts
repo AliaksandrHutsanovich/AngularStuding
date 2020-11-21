@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { User } from 'src/app/entities/user';
 import { Course } from 'src/app/entities/course';
+import { Store } from '@ngrx/store';
 
 describe('AuthService', () => {
   const course = new Course(
@@ -43,6 +44,7 @@ describe('AuthService', () => {
         AuthService,
         { provide: Router, useValue: routerSpy },
         { provide: HttpClient, useValue: httpSpy },
+        { provide: Store, useValue: storeSpy },
       ],
     });
     service = TestBed.inject(AuthService);

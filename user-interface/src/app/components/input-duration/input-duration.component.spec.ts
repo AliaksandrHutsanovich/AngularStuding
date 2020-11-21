@@ -4,7 +4,7 @@ import {  HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { InputDurationComponent } from './input-duration.component';
-import { TransformTimePipe } from 'src/app/pipes/transform-time/transform-time.pipe';
+import { TransformTimePipe } from 'src/app/pipes/transform-time';
 
 describe('InputDurationComponent', () => {
   let component: InputDurationComponent;

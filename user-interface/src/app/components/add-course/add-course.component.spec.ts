@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { AddCourseComponent } from './add-course.component';
-import { TransformTimePipe } from '../../pipes/transform-time/transform-time.pipe';
-import { CoursesService } from '../../services/courses/courses.service';
-import { LoadService } from '../../services/load/load.service';
+import { TransformTimePipe } from '../../pipes/transform-time';
+import { CoursesService } from '../../services/courses';
+import { LoadService } from '../../services/load';
 import { Course } from 'src/app/entities/course';
 import { of } from 'rxjs';
 

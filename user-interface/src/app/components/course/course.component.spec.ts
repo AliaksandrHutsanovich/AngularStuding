@@ -10,12 +10,12 @@ import { CourseComponent } from './course.component';
 import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatePipe } from '../../pipes/date/date.pipe';
-import { TransformTimePipe } from '../../pipes/transform-time/transform-time.pipe';
+import { TransformTimePipe } from '../../pipes/transform-time';
 
 @Component({
   template: `
     <app-course
-      [course]="course" 
+      [course]="course"
       (onClicked)="onClicked($event)">
     </app-course>`
 })
@@ -87,7 +87,7 @@ describe('CourseComponent', () => {
     component.course = entranceCourse;
     component.onClicked.emit = spyObj.handleClick;
     router.navigate = spyObj.goToCoursePage;
-    
+
     fixture.detectChanges();
 
     hostFixture = TestBed.createComponent(TestHostComponent);
