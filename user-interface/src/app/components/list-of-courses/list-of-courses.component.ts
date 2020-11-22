@@ -34,6 +34,7 @@ export class ListOfCoursesComponent implements OnInit,
   private subjectForCourses: Subject<Course[]>;
 
   selectedCourseId: number;
+  prevSearchValue: string;
 
   @Input() searchValue: string;
 
@@ -95,6 +96,10 @@ export class ListOfCoursesComponent implements OnInit,
 
   ngOnChanges(): void {
     this.loadService.updateShow(true);
+    if (this.prevSearchValue !== this.searchValue) {
+      this.start = 0;
+    }
+    this.prevSearchValue = this.searchValue;
     this.store.dispatch(makeCoursesRequest({
       index: this.start,
       quantity: 3,

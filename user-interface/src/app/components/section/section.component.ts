@@ -35,7 +35,7 @@ export class SectionComponent implements AfterViewInit, OnDestroy {
 
   @Output() onSearched = new EventEmitter<string>();
 
-  @ViewChild('searchInput') 
+  @ViewChild('searchInput')
   input: ElementRef;
 
   ngAfterViewInit() {
