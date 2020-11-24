@@ -32,10 +32,6 @@ export class CoursesEffects {
             } else {
               this.store.dispatch(loadCourses({ courses }));
             }
-            this.store.pipe(select('coursesList'))
-              .subscribe(({ courses }) => {
-                this.courseService.updateCourses(courses);
-              });
           }),
         )
     }),

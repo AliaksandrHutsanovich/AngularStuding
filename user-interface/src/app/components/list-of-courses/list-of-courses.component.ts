@@ -61,7 +61,7 @@ export class ListOfCoursesComponent implements OnInit,
     }));
   }
 
-  getCourses = (courses: Course[]) => {
+  getCourses = ({ courses }) => {
     this.courses = courses;
     this.searchedCourses = courses;
     this.loadService.updateShow(false);
@@ -89,8 +89,10 @@ export class ListOfCoursesComponent implements OnInit,
 
   ngOnInit(): void {
     this.loadService.updateShow(true);
-    this.subjectForCourses = this.coursesService.getSubjectForCourses();
-    this.subjectForCourses.subscribe(this.getCourses);
+    // this.subjectForCourses = this.coursesService.getSubjectForCourses();
+    // this.subjectForCourses.subscribe(this.getCourses);
+    this.store.pipe(select('coursesList'))
+      .subscribe(this.getCourses);
 
   }
 
