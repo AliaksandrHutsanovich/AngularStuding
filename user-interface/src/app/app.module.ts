@@ -147,11 +147,6 @@ const pageRoutes: Routes = [
     AuthGuard,
     LoadService,
     AuthorsService,
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: ResponseInterceptorInterceptor,
-    //   multi: true,
-    // },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorInterceptor,

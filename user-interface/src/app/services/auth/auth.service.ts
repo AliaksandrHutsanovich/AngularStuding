@@ -62,10 +62,5 @@ export class AuthService {
         }
       ),
     );
-    // return this.httpClient.get<User>('http://localhost:3000/logIn')
-    //   .subscribe((userInfo: User) => {
-    //     this.store.dispatch(addUserEmailToStore({ userInfo }));
-    //     return this.store.pipe(select('userInfo'));
-    //   });
   }
 }
