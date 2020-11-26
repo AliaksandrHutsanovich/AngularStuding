@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthorsComponent } from './authors.component';
+import { AuthorsService } from 'src/app/services';
 
 describe('AuthorsComponent', () => {
   let component: AuthorsComponent;
@@ -8,7 +9,8 @@ describe('AuthorsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthorsComponent ]
+      declarations: [ AuthorsComponent ],
+      providers: [AuthorsService],
     })
     .compileComponents();
   }));

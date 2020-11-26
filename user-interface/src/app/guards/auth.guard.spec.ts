@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { Router, UrlTree } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { AuthGuard } from './auth.guard';
 import { AuthService } from '../services';
@@ -10,6 +11,7 @@ describe('AuthGuard', () => {
   let guard: AuthGuard;
   const urlTree = new UrlTree();
   let httpSpy;
+  let storeSpy;
 
   const routerSpy = jasmine.createSpyObj('Router', ['navigate', 'parseUrl']);
   routerSpy.parseUrl.and.returnValue(urlTree);
@@ -26,12 +28,16 @@ describe('AuthGuard', () => {
       'put',
       'delete',
     ]);
+    storeSpy = jasmine.createSpyObj('Store', [
+      'dispatch',
+    ]);
     TestBed.configureTestingModule({
       providers: [
         AuthGuard,
         { provide: Router, useValue: routerSpy },
         AuthService,
         { provide: HttpClient, useValue: httpSpy },
+        { provide: Store, useValue: storeSpy },
       ],
     });
     guard = TestBed.inject(AuthGuard);

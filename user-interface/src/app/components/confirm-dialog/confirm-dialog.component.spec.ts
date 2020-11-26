@@ -1,9 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { Pipe, PipeTransform } from '@angular/core';
 import { CoursesService } from '../../services';
 
 import { ConfirmDialogComponent } from './confirm-dialog.component';
+
+@Pipe({ name: 'translate' })
+class TranslatePipe implements PipeTransform {
+
+  transform(value: string): string {
+     return value;
+  }
+
+}
 
 describe('ConfirmDialogComponent', () => {
   let component: ConfirmDialogComponent;
@@ -26,7 +36,10 @@ describe('ConfirmDialogComponent', () => {
     httpSpy.delete.and.returnValue({ subscribe });
 
     TestBed.configureTestingModule({
-      declarations: [ ConfirmDialogComponent ],
+      declarations: [
+        ConfirmDialogComponent,
+        TranslatePipe,
+      ],
       providers: [
         {
           provide: MatDialogRef,

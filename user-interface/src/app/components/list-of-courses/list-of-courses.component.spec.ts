@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { Course } from '../../entities';
 
 import { ListOfCoursesComponent } from './list-of-courses.component';
@@ -29,6 +30,7 @@ describe('ListOfCoursesComponent', () => {
   let componentEl: any;
   let httpSpy;
   let suscribeSpy;
+  let storeSpy;
   const course = new Course(
     4,
     'new course',
@@ -81,6 +83,9 @@ describe('ListOfCoursesComponent', () => {
     httpSpy.post.and.returnValue({ subscribe: suscribeSpy });
     httpSpy.put.and.returnValue({ subscribe: suscribeSpy });
     httpSpy.get.and.returnValue({ subscribe: suscribeSpy });
+    storeSpy = jasmine.createSpyObj('Store', [
+      'dispatch',
+    ]);
 
     TestBed.configureTestingModule({
       declarations: [
@@ -102,6 +107,7 @@ describe('ListOfCoursesComponent', () => {
           useValue: routerSpy,
         },
         { provide: HttpClient, useValue: httpSpy },
+        { provide: Store, useValue: storeSpy },
       ],
     })
     .compileComponents();

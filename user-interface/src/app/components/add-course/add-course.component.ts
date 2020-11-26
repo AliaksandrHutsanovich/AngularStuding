@@ -7,7 +7,6 @@ import { Course } from '../../entities';
 import { Subject } from 'rxjs';
 import { makeCourseRequest, editCourseRequest } from 'src/app/actions';
 import { State } from 'src/app/reducers';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-course',

@@ -1,12 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AddCourseComponent } from './add-course.component';
+import { TranslateService } from '@ngx-translate/core';
 import { TransformTimePipe } from '../../pipes';
 import { CoursesService, LoadService } from '../../services';
 import { Course } from 'src/app/entities';
 import { of } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 describe('AddCourseComponent', () => {
   const course = new Course(
@@ -23,6 +26,7 @@ describe('AddCourseComponent', () => {
   let route: ActivatedRoute;
   let httpSpy;
   let storeSpy;
+  let translateSpy;
   const subscribe = (fn) => {
     fn(course);
   };
@@ -51,6 +55,9 @@ describe('AddCourseComponent', () => {
     storeSpy = jasmine.createSpyObj('Store', [
       'dispatch',
     ]);
+    translateSpy = jasmine.createSpyObj('TranslateService', [
+      'instant'
+    ]);
 
     TestBed.configureTestingModule({
       declarations: [ AddCourseComponent, TransformTimePipe ],
@@ -63,7 +70,10 @@ describe('AddCourseComponent', () => {
         LoadService,
         { provide: Router, useValue: routerSpy },
         { provide: HttpClient, useValue: httpSpy },
+        { provide: Store, useValue: storeSpy },
+        { provide: TranslateService, useValue: translateSpy },
       ],
+      imports: [FormsModule],
     })
     .compileComponents();
   }));

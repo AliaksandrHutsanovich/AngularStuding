@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { User } from '../../entities';
 
 import { HeaderComponent } from './header.component';
@@ -17,6 +18,7 @@ describe('HeaderComponent', () => {
   let fixture: ComponentFixture<HeaderComponent>;
   let httpSpy;
   let storeSpy;
+  let translateSpy;
   const subscribe = (fn) => {
     fn(user);
   };
@@ -38,6 +40,10 @@ describe('HeaderComponent', () => {
     storeSpy = jasmine.createSpyObj('Store', [
       'dispatch',
     ]);
+    translateSpy = jasmine.createSpyObj('TranslateService', [
+      'setDefaultLang'
+    ]);
+
 
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
@@ -46,6 +52,7 @@ describe('HeaderComponent', () => {
         { provide: Router, useValue: routerSpy },
         { provide: HttpClient, useValue: httpSpy },
         { provide: Store, useValue: storeSpy },
+        { provide: TranslateService, useValue: translateSpy },
       ],
     })
     .compileComponents();

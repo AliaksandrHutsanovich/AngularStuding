@@ -4,12 +4,22 @@ import {
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
+import { Pipe, PipeTransform } from '@angular/core';
 import { Course } from '../../entities';
 
 import { CourseComponent } from './course.component';
 import { DebugElement } from '@angular/core';
 import { Router } from '@angular/router';
 import { DatePipe, TransformTimePipe } from '../../pipes';
+
+@Pipe({ name: 'translate' })
+class TranslatePipe implements PipeTransform {
+
+  transform(value: string): string {
+     return value;
+  }
+
+}
 
 @Component({
   template: `
@@ -54,6 +64,7 @@ describe('CourseComponent', () => {
         TestHostComponent,
         DatePipe,
         TransformTimePipe,
+        TranslatePipe,
       ],
       imports: [RouterTestingModule],
     })
