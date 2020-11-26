@@ -27,7 +27,7 @@ import {
 } from './components';
 import {
   BorderDirective,
-  ValidateValueDirective,
+  ValidateOnEmptyDirective,
 } from './directives';
 import {
   CoursesEffects,
@@ -117,7 +117,7 @@ const pageRoutes: Routes = [
     ChipComponent,
     InputDurationComponent,
     InputDateComponent,
-    ValidateValueDirective,
+    ValidateOnEmptyDirective,
   ],
   imports: [
     BrowserModule,

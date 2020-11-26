@@ -48,7 +48,7 @@ export class SectionComponent implements AfterViewInit, OnDestroy {
       );
     this.subscription = search$
       .subscribe({
-        next: (text) => {
+        next: () => {
           this.onSearched.emit(this.form.get('search').value);
         },
       });

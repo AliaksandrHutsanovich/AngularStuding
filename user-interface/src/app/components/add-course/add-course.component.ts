@@ -81,6 +81,7 @@ export class AddCourseComponent implements OnInit {
   }
 
   translateMessages(messages: string[]) {
+    if (messages)
     return messages.map(message => this.translateService.instant(message));
   }
 

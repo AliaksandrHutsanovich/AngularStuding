@@ -1,2 +1,2 @@
 export { BorderDirective } from './border';
-export { ValidateValueDirective } from './validate-value';
+export { ValidateOnEmptyDirective } from './validate-on-empty';

@@ -43,7 +43,7 @@
   <app-input-date
     [(ngModel)]="course.creationDate"
     name="creationDate"
-    validateValue
+    validateOnEmpty
     [required]="true"
     #creationDate="ngModel"
     [isError]="creationDate.errors?.messages && creationDate.touched"
@@ -57,7 +57,7 @@
   <app-input-duration
     [(ngModel)]="course.duration"
     name="duration"
-    validateValue
+    validateOnEmpty
     [required]="true"
     #duration="ngModel"
     [isError]="duration.errors?.messages && duration.touched"
@@ -72,7 +72,7 @@
     [(ngModel)]="course.authors"
     name="authors"
     [required]="true"
-    validateValue
+    validateOnEmpty
     #authors="ngModel"
     [isError]="authors.errors?.messages && authors.touched"
   >

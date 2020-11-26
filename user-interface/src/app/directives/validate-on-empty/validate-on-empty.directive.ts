@@ -1,16 +1,15 @@
 import { Directive, Input } from '@angular/core';
 import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 
 @Directive({
-  selector: '[validateValue]',
+  selector: '[validateOnEmpty]',
   providers: [{
     provide: NG_VALIDATORS,
-    useExisting: ValidateValueDirective,
+    useExisting: ValidateOnEmptyDirective,
     multi: true
   }]
 })
-export class ValidateValueDirective implements Validator {
+export class ValidateOnEmptyDirective implements Validator {
 
   @Input() required: boolean;
   validate(control: AbstractControl): {[key: string]: any} | null {

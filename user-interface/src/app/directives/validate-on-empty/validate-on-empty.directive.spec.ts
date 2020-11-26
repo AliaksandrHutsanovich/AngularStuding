@@ -1,8 +1,8 @@
-import { ValidateValueDirective } from './validate-value.directive';
+import { ValidateOnEmptyDirective } from './validate-on-empty.directive';
 
 describe('ValidateValueDirective', () => {
   it('should create an instance', () => {
-    const directive = new ValidateValueDirective();
+    const directive = new ValidateOnEmptyDirective();
     expect(directive).toBeTruthy();
   });
 });
