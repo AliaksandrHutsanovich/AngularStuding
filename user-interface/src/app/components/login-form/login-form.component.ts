@@ -57,6 +57,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   handleClick() {
+    console.log(this.form.valid);
     if (this.form.valid) {
       this.authService.logIn(
         new User(

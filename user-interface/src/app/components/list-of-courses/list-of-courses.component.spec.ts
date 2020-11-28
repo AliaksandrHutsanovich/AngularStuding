@@ -9,6 +9,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { Pipe, PipeTransform } from '@angular/core';
 import { Course } from '../../entities';
 
 import { ListOfCoursesComponent } from './list-of-courses.component';
@@ -42,6 +43,14 @@ describe('ListOfCoursesComponent', () => {
   );
   const courses = [course];
 
+  @Pipe({ name: 'translate' })
+  class TranslatePipe implements PipeTransform {
+
+    transform(value: string): string {
+      return value;
+    }
+  }
+
   const spy = jasmine.createSpy();
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
   routerSpy.navigate.and.callFake(() => {
@@ -71,7 +80,7 @@ describe('ListOfCoursesComponent', () => {
   beforeEach(async(() => {
     suscribeSpy = jasmine.createSpy('spy').and.callFake(
       (fn) => {
-        fn(courses);
+        fn({ courses });
       },
     );
     httpSpy = jasmine.createSpyObj('HttpClient', [
@@ -85,7 +94,10 @@ describe('ListOfCoursesComponent', () => {
     httpSpy.get.and.returnValue({ subscribe: suscribeSpy });
     storeSpy = jasmine.createSpyObj('Store', [
       'dispatch',
+      'pipe',
     ]);
+
+    storeSpy.pipe.and.returnValue({ subscribe: suscribeSpy });
 
     TestBed.configureTestingModule({
       declarations: [
@@ -93,6 +105,7 @@ describe('ListOfCoursesComponent', () => {
         ListOfCoursesComponent,
         CourseComponent,
         OrderByPipe,
+        TranslatePipe,
       ],
       providers: [
         SearchPipe,
@@ -137,8 +150,8 @@ describe('ListOfCoursesComponent', () => {
     const hostComponent = hostFixture.componentInstance;
     hostComponent.value = 'value';
     hostFixture.detectChanges();
-    //three times because onChange and onInit called at the beginning and onChange after update
-    expect(suscribeSpy).toHaveBeenCalledTimes(3);
+
+    expect(suscribeSpy).toHaveBeenCalledTimes(2);
   });
 
   it('handleAddCourse should be called', () => {
@@ -151,7 +164,7 @@ describe('ListOfCoursesComponent', () => {
   it('handleLoadMore should be called', () => {
     const componentEl = fixture.nativeElement.querySelector('.load-button');
     componentEl.click();
-    //two times because onInit and handleLoadMore
-    expect(suscribeSpy).toHaveBeenCalledTimes(2);
+
+    expect(suscribeSpy).toHaveBeenCalledTimes(1);
   });
 });

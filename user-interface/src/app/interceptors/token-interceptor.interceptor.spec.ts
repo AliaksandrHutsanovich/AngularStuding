@@ -30,12 +30,13 @@ describe('TokenInterceptorInterceptor', () => {
 
   it('next.handle should be called when no token in local storage', () => {
     interceptor = TestBed.inject(TokenInterceptorInterceptor);
+    localStorage.getItem = () => undefined;
 
     interceptor.intercept(request, next);
     expect(spy).toHaveBeenCalledWith(request);
   });
 
-  it('next.handle should be called when no token is in local storage', () => {
+  it('next.handle should be called when token is in local storage', () => {
     interceptor = TestBed.inject(TokenInterceptorInterceptor);
     localStorage.getItem = () => 'token';
 

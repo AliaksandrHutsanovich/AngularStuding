@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient } from '@angular/common/http';
+import { Pipe, PipeTransform } from '@angular/core';
 import { AuthService } from '../../services';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -22,6 +23,17 @@ describe('HeaderComponent', () => {
   const subscribe = (fn) => {
     fn(user);
   };
+  const pipe = (arg) => {
+    return { subscribe };
+  };
+
+  @Pipe({ name: 'translate' })
+  class TranslatePipe implements PipeTransform {
+
+    transform(value: string): string {
+      return value;
+    }
+  }
 
   const removeItemSpy = jasmine.createSpy('removeItem');
   const getItemSpy = jasmine.createSpy('getItem').and.returnValue('user|email');
@@ -36,7 +48,7 @@ describe('HeaderComponent', () => {
       'put',
       'delete',
     ]);
-    httpSpy.get.and.returnValue({ subscribe });
+    httpSpy.get.and.returnValue({ subscribe, pipe });
     storeSpy = jasmine.createSpyObj('Store', [
       'dispatch',
     ]);
@@ -46,7 +58,7 @@ describe('HeaderComponent', () => {
 
 
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ],
+      declarations: [ HeaderComponent, TranslatePipe ],
       providers: [
         AuthService,
         { provide: Router, useValue: routerSpy },

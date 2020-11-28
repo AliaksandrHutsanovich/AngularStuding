@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { Pipe, PipeTransform } from '@angular/core';
 
 import { AddCourseComponent } from './add-course.component';
 import { TranslateService } from '@ngx-translate/core';
@@ -30,6 +31,15 @@ describe('AddCourseComponent', () => {
   const subscribe = (fn) => {
     fn(course);
   };
+
+@Pipe({ name: 'translate' })
+class TranslatePipe implements PipeTransform {
+
+  transform(value: string): string {
+     return value;
+  }
+
+}
 
   const spy = jasmine.createSpy();
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
@@ -60,7 +70,11 @@ describe('AddCourseComponent', () => {
     ]);
 
     TestBed.configureTestingModule({
-      declarations: [ AddCourseComponent, TransformTimePipe ],
+      declarations: [
+        AddCourseComponent,
+        TransformTimePipe,
+        TranslatePipe,
+      ],
       providers: [
         {
           provide: ActivatedRoute,
@@ -95,7 +109,7 @@ describe('AddCourseComponent', () => {
     const componentEl = fixture.nativeElement.querySelector('.form__submit');
     componentEl.click();
 
-    expect(spy).toHaveBeenCalled();
+    expect(storeSpy.dispatch).toHaveBeenCalled();
   });
 
   it('handleCancel should be called', () => {
@@ -119,6 +133,6 @@ describe('AddCourseComponent', () => {
     const componentEl = fixture.nativeElement.querySelector('.form__submit');
     componentEl.click();
 
-    expect(spy).toHaveBeenCalled();
+    expect(storeSpy.dispatch).toHaveBeenCalled();
   });
 });

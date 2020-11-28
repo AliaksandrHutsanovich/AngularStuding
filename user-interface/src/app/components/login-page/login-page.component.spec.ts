@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
 import { AuthService } from '../../services';
 
 import { LoginPageComponent } from './login-page.component';
@@ -9,6 +10,7 @@ describe('LoginPageComponent', () => {
   let component: LoginPageComponent;
   let fixture: ComponentFixture<LoginPageComponent>;
   let httpSpy;
+  let storeSpy;
 
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
@@ -20,12 +22,17 @@ describe('LoginPageComponent', () => {
       'delete',
     ]);
 
+    storeSpy = jasmine.createSpyObj('Store', [
+      'dispatch',
+    ]);
+
     TestBed.configureTestingModule({
       declarations: [ LoginPageComponent ],
       providers: [
         AuthService,
         { provide: Router, useValue: routerSpy },
         { provide: HttpClient, useValue: httpSpy },
+        { provide: Store, useValue: storeSpy },
       ],
     })
     .compileComponents();

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Pipe, PipeTransform } from '@angular/core';
 
 import { InputDateComponent } from './input-date.component';
 
@@ -6,9 +7,20 @@ describe('InputDateComponent', () => {
   let component: InputDateComponent;
   let fixture: ComponentFixture<InputDateComponent>;
 
+  @Pipe({ name: 'translate' })
+  class TranslatePipe implements PipeTransform {
+
+    transform(value: string): string {
+      return value;
+    }
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputDateComponent ]
+      declarations: [
+        InputDateComponent,
+        TranslatePipe,
+      ]
     })
     .compileComponents();
   }));

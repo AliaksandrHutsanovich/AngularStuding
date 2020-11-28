@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Pipe, PipeTransform } from '@angular/core';
 
 import { SectionComponent } from './section.component';
 import { By } from '@angular/platform-browser';
@@ -7,9 +8,17 @@ describe('SectionComponent', () => {
   let component: SectionComponent;
   let fixture: ComponentFixture<SectionComponent>;
 
+  @Pipe({ name: 'translate' })
+  class TranslatePipe implements PipeTransform {
+
+    transform(value: string): string {
+      return value;
+    }
+  }
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SectionComponent ]
+      declarations: [ SectionComponent, TranslatePipe ]
     })
     .compileComponents();
   }));
@@ -27,11 +36,9 @@ describe('SectionComponent', () => {
   });
 
   it('onSerarched.emit should be called as a result of subscription when value', (done) => {
-    const debugComponent = fixture.debugElement.query(By.css('input'));
-    const componentEl = debugComponent.nativeElement;
-    componentEl.value = 'value';
-    componentEl.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
+    const component = fixture.componentInstance;
+    const componentEl = fixture.debugElement.query(By.css('input')).nativeElement;
+    component.form.get('search').setValue('value');
     componentEl.dispatchEvent(new Event('keyup'));
     fixture.detectChanges();
 
@@ -42,11 +49,9 @@ describe('SectionComponent', () => {
   });
 
   it('onSerarched.emit should be called as a result of subscription when no value', (done) => {
-    const debugComponent = fixture.debugElement.query(By.css('input'));
-    const componentEl = debugComponent.nativeElement;
-    componentEl.value = '';
-    componentEl.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
+    const component = fixture.componentInstance;
+    const componentEl = fixture.debugElement.query(By.css('input')).nativeElement;
+    component.form.get('search').setValue('');
     componentEl.dispatchEvent(new Event('keyup'));
     fixture.detectChanges();
 

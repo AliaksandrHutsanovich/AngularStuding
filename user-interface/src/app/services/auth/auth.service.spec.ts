@@ -24,6 +24,9 @@ describe('AuthService', () => {
   const subscribe = (fn) => {
     fn(course);
   };
+  const pipe = (arg) => {
+    return { subscribe };
+  }
 
   beforeEach(() => {
     httpSpy = jasmine.createSpyObj('HttpClient', [
@@ -33,6 +36,7 @@ describe('AuthService', () => {
       'delete',
     ]);
     httpSpy.post.and.returnValue({ subscribe });
+    httpSpy.get.and.returnValue({ pipe });
 
     storeSpy = jasmine.createSpyObj('Store', [
       'dispatch',
