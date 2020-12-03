@@ -87,4 +87,12 @@ describe('LoginFormComponent', () => {
 
     expect(setItemSpy).toHaveBeenCalled();
   });
+
+  it('validate should be called with errors', () => {
+    const componentEl = fixture.nativeElement.querySelector('input');
+    componentEl.dispatchEvent(new Event('blur'));
+    fixture.detectChanges();
+
+    expect(translateSpy.instant).toHaveBeenCalled();
+  })
 });

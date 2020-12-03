@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onSelect({ target: { value } }) {
+    console.log('value = ' + value);
     this.translate.setDefaultLang(value);
   }
 

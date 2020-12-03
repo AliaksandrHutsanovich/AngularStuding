@@ -73,14 +73,6 @@ export class AuthorsComponent extends ValueAccessorBase<string[]>
     this.onBlur();
   }
 
-  validate(): void {
-    if (this.value.length) {
-      this.errorMessage = '';
-    } else {
-      this.errorMessage = 'At least one author shoulbe chosen';
-    }
-  }
-
   onBlur(): void {
     this.touch();
   }

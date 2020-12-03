@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { tap } from "rxjs/operators";
 
 import { AuthService } from './auth.service';
 import { Course, User } from 'src/app/entities';
@@ -24,7 +25,7 @@ describe('AuthService', () => {
   const subscribe = (fn) => {
     fn(course);
   };
-  const pipe = (arg) => {
+  const pipe = () => {
     return { subscribe };
   }
 

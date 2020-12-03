@@ -97,4 +97,12 @@ describe('HeaderComponent', () => {
 
     expect(component).toBeTruthy();
   });
+
+  it('onSelect should be called', () => {
+    const componentEl = fixture.nativeElement.querySelector('select');
+    componentEl.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
+    expect(translateSpy.setDefaultLang).toHaveBeenCalled();
+  });
 });

@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Pipe, PipeTransform } from '@angular/core';
-
 import { InputDateComponent } from './input-date.component';
 
 describe('InputDateComponent', () => {
@@ -20,7 +19,7 @@ describe('InputDateComponent', () => {
       declarations: [
         InputDateComponent,
         TranslatePipe,
-      ]
+      ],
     })
     .compileComponents();
   }));
@@ -33,5 +32,15 @@ describe('InputDateComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('handleBlur should be called', () => {
+    const component = fixture.componentInstance;
+    component.touch = jasmine.createSpy();
+    const componentEl = fixture.nativeElement.querySelector('input');
+    componentEl.dispatchEvent(new Event('blur'));
+    fixture.detectChanges();
+
+    expect(component.touch).toHaveBeenCalled();
   });
 });

@@ -28,6 +28,7 @@ describe('AddCourseComponent', () => {
   let httpSpy;
   let storeSpy;
   let translateSpy;
+  let coursesServiceSpy;
   const subscribe = (fn) => {
     fn(course);
   };
@@ -42,6 +43,7 @@ class TranslatePipe implements PipeTransform {
 }
 
   const spy = jasmine.createSpy();
+  const spyToTranslate = jasmine.createSpy();
   const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
   routerSpy.navigate.and.callFake(() => {
     spy();
@@ -68,6 +70,17 @@ class TranslatePipe implements PipeTransform {
     translateSpy = jasmine.createSpyObj('TranslateService', [
       'instant'
     ]);
+    coursesServiceSpy = jasmine.createSpyObj('CoursesService', [
+      'getSubjectToRedirect', 'getSubjectForCourse',
+    ]);
+
+    translateSpy.instant = (message) => {
+      spyToTranslate();
+      return message
+    }
+
+    coursesServiceSpy.getSubjectToRedirect.and.returnValue({ subscribe });
+    coursesServiceSpy.getSubjectForCourse.and.returnValue({ subscribe });
 
     TestBed.configureTestingModule({
       declarations: [
@@ -80,14 +93,16 @@ class TranslatePipe implements PipeTransform {
           provide: ActivatedRoute,
           useValue: withParam,
         },
-        CoursesService,
+        { provide: CoursesService, useValue: coursesServiceSpy },
         LoadService,
         { provide: Router, useValue: routerSpy },
         { provide: HttpClient, useValue: httpSpy },
         { provide: Store, useValue: storeSpy },
         { provide: TranslateService, useValue: translateSpy },
       ],
-      imports: [FormsModule],
+      imports: [
+        FormsModule,
+      ],
     })
     .compileComponents();
   }));
@@ -134,5 +149,20 @@ class TranslatePipe implements PipeTransform {
     componentEl.click();
 
     expect(storeSpy.dispatch).toHaveBeenCalled();
+  });
+
+  it('translate should be called', () => {
+    component.validate();
+    expect(spyToTranslate).toHaveBeenCalled();
+  });
+
+  it('translateMessages should not be called', () => {
+    expect(component.translateMessages(null)).toBeUndefined();
+  })
+
+  it('translateMessages should be called', () => {
+    expect(
+      component.translateMessages(['message1', 'message2', ''])
+    ).toEqual(['message1', 'message2', '']);
   });
 });

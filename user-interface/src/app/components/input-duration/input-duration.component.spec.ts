@@ -52,4 +52,14 @@ describe('InputDurationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('handleBlur should be called', () => {
+    const component = fixture.componentInstance;
+    component.touch = jasmine.createSpy();
+    const componentEl = fixture.nativeElement.querySelector('input');
+    componentEl.dispatchEvent(new Event('blur'));
+    fixture.detectChanges();
+
+    expect(component.touch).toHaveBeenCalled();
+  });
 });

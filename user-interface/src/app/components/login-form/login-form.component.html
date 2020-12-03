@@ -22,7 +22,7 @@
       <input placeholder="{{ 'PAGES.LOGIN.FORM_FIELDS.PASSWORD.PLACEHOLDER' | translate }}" formControlName="password" />
     </div>
     <app-validation-messages
-    *ngIf="f.password.touched"
+      *ngIf="f.password.touched"
       [messages]="validate('password', f.password.errors)"
     ></app-validation-messages>
   </div>
