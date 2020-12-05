@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Course } from '../../entities';
+import HOST from 'src/app/constants';
 
 @Injectable()
 export class CoursesService {
@@ -36,13 +37,13 @@ export class CoursesService {
 
   getList(start, count, search?): Observable<Course[]> {
     return this.httpClient.get<Course[]>(
-      `http://localhost:3000/courses?start=${start}&count=${count}` + (search ? `&search=${search}` : ''),
+      `${HOST}/courses?start=${start}&count=${count}` + (search ? `&search=${search}` : ''),
     );
   };
 
   addItem(course: Course): Observable<Course> {
     return this.httpClient.post<Course>(
-      'http://localhost:3000/courses',
+      `${HOST}/courses`,
       course,
       {
         headers: new HttpHeaders({
@@ -53,12 +54,12 @@ export class CoursesService {
   }
 
   getItemById(id: number): Observable<Course> {
-    return this.httpClient.get<Course>(`http://localhost:3000/courses/${id}`);
+    return this.httpClient.get<Course>(`${HOST}/courses/${id}`);
   }
 
   updateItem(item: Course): Observable<Course> {
     return this.httpClient.put<Course>(
-      `http://localhost:3000/courses/${item.id}`,
+      `${HOST}/courses/${item.id}`,
       item,
       {
         headers: new HttpHeaders({
@@ -70,7 +71,7 @@ export class CoursesService {
 
   removeItem(id: number): Observable<Object> {
     return this.httpClient.delete<Object>(
-      `http://localhost:3000/courses/${id}`
+      `${HOST}/courses/${id}`
     );
   }
 

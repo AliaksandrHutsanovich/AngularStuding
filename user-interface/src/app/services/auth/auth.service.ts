@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { HttpResponse } from '@angular/common/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import HOST from 'src/app/constants';
 import { User } from '../../entities';
 import { Observable } from 'rxjs';
 import { tap } from "rxjs/operators";
@@ -21,7 +22,7 @@ export class AuthService {
 
   logIn(user: User): void {
     this.httpClient.post(
-      'http://localhost:3000/logIn',
+      `${HOST}/logIn`,
       user,
       {
         headers: new HttpHeaders({
@@ -53,7 +54,7 @@ export class AuthService {
   }
 
   getUserInfo(): Observable<User> {
-    return this.httpClient.get<User>('http://localhost:3000/logIn').pipe(
+    return this.httpClient.get<User>(`${HOST}/logIn`).pipe(
       tap(
         (evt) => {
           if (evt instanceof HttpResponse) {

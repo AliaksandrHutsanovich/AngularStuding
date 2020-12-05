@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import HOST from 'src/app/constants';
 
 @Injectable()
 export class AuthorsService {
@@ -8,7 +9,7 @@ export class AuthorsService {
 
   getList(): Observable<string[]> {
     return this.httpClient.get<string[]>(
-      'http://localhost:3000/authors',
+      `${HOST}/authors`,
     );
   }
 }
