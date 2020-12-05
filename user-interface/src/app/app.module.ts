@@ -60,9 +60,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import * as fromState from './reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { DEPLOY_URL } from './constants';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  if (environment.production) {
+    return new TranslateHttpLoader(http, `.${DEPLOY_URL}/assets/i18n/`, '.json');
+  }
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 const pageRoutes: Routes = [
@@ -121,7 +125,7 @@ const pageRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(pageRoutes),
+    RouterModule.forRoot(pageRoutes, { useHash: !!environment.production }),
     FormsModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
