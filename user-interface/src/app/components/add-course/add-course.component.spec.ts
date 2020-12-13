@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { AddCourseComponent } from './add-course.component';
+import { BreadcrumbsComponent } from '../breadcrumbs';
 import { TranslateService } from '@ngx-translate/core';
 import { TransformTimePipe } from '../../pipes';
 import { CoursesService, LoadService } from '../../services';
@@ -87,6 +88,7 @@ class TranslatePipe implements PipeTransform {
         AddCourseComponent,
         TransformTimePipe,
         TranslatePipe,
+        BreadcrumbsComponent,
       ],
       providers: [
         {

@@ -35,6 +35,12 @@ header {
   padding: 0 30px;
 }
 
+@media (max-width: 505px) {
+  .menu__text {
+    display: none;
+  }
+}
+
 .menu__text > span:before {
   content: "";
   width: 20px;

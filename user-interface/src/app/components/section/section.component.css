@@ -12,6 +12,12 @@
   border: 1px solid #dcd4d4;
 }
 
+@media (max-width: 505px) {
+  .search-section__input {
+    width: calc(100% - 40px);
+  }
+}
+
 .search-section__button {
   margin-left: 5px;
   padding: 10px 20px;

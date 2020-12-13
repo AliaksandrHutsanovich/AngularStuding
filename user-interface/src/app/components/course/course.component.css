@@ -28,10 +28,9 @@
 }
 
 .item__timestamp-wrapper {
-  margin-left: 30%;
   display: flex;
-  width: 8%;
-  justify-content: space-between;
+  width: auto;
+  margin: 0 auto;
 }
 
 .item__timestamp {
