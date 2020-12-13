@@ -64,7 +64,6 @@ export class ListOfCoursesComponent implements OnInit,
   getCourses = ({ courses }) => {
     this.courses = courses;
     this.searchedCourses = courses;
-    this.loadService.updateShow(false);
   }
 
   onClicked(courseId: number) {
