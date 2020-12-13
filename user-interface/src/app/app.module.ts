@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { APP_BASE_HREF } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -63,9 +64,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { DEPLOY_URL } from './constants';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  if (environment.production) {
-    return new TranslateHttpLoader(http, `.${DEPLOY_URL}/assets/i18n/`, '.json');
-  }
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -155,6 +153,10 @@ const pageRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorInterceptor,
       multi: true,
+    },
+    {
+      provide: APP_BASE_HREF,
+      useValue: environment.production ? '/user-interface/' : '/',
     },
   ],
   bootstrap: [AppComponent]
