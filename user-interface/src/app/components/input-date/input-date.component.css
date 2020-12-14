@@ -21,6 +21,7 @@
 
 .form__field > .limited-width {
   width: 15%;
+  min-width: 145px;
 }
 
 .error {
