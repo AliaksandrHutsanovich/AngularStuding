@@ -156,7 +156,7 @@ const pageRoutes: Routes = [
     },
     {
       provide: APP_BASE_HREF,
-      useValue: environment.production ? '/user-interface/' : '/',
+      useValue: '/',
     },
   ],
   bootstrap: [AppComponent]
