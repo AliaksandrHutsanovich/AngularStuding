@@ -1,4 +1,4 @@
-<app-breadcrumbs [courseTitle]="course.title"></app-breadcrumbs>
+<app-breadcrumbs [courseTitle]="id ? course.title : 'new'"></app-breadcrumbs>
 <form #f="ngForm" class="form" (ngSubmit)="handleSubmit()">
 
   <div class="form__field">
