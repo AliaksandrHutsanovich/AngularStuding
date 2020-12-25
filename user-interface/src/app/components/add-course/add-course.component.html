@@ -1,5 +1,6 @@
 <app-breadcrumbs [courseTitle]="id ? course.title : 'new'"></app-breadcrumbs>
 <form #f="ngForm" class="form" (ngSubmit)="handleSubmit()">
+  <app-loading-block></app-loading-block>
 
   <div class="form__field">
     <div class="form__field-title-wrapper">

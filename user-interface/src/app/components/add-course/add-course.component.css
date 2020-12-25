@@ -1,7 +1,7 @@
 .form {
+  position: relative;
   width: 60%;
   margin: 0 auto;
-  height: 100vh;
   padding-top: 10px;
   min-width: 210px;
 }
