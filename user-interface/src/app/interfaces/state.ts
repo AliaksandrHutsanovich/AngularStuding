@@ -9,3 +9,7 @@ export interface EmailState {
 export interface CoursesState {
   courses: Course[],
 };
+
+export interface CoursesTotalNumState {
+  num: number,
+};

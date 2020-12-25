@@ -34,3 +34,8 @@ export const editCourseRequest = createAction(
   'edit_course_request',
   props<{ id?: number, course: Course }>()
 );
+
+export const addTotalNumOfCourses = createAction(
+  'add_total_num_of_courses',
+  props<{ num: number }>()
+);

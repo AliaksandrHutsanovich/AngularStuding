@@ -16,7 +16,6 @@ import { Store, select } from '@ngrx/store';
 import { Course } from '../../entities';
 import { CoursesService, LoadService } from '../../services';
 import { ConfirmDialogComponent } from '../confirm-dialog';
-import { Subject } from 'rxjs';
 import { makeCoursesRequest } from 'src/app/actions';
 import { State } from 'src/app/reducers';
 
@@ -31,7 +30,7 @@ export class ListOfCoursesComponent implements OnInit,
   courses: Course[];
   searchedCourses: Course[] = [];
   start: number;
-  private subjectForCourses: Subject<Course[]>;
+  totalCoursesNum: number;
 
   selectedCourseId: number;
   prevSearchValue: string;
@@ -66,6 +65,10 @@ export class ListOfCoursesComponent implements OnInit,
     this.searchedCourses = courses;
   }
 
+  getTotalCoursesNum = ({ num }) => {
+    this.totalCoursesNum = num;
+  }
+
   onClicked(courseId: number) {
     this.selectedCourseId = courseId;
     console.log('id=', courseId);
@@ -91,6 +94,8 @@ export class ListOfCoursesComponent implements OnInit,
     this.store.pipe(select('coursesList'))
       .subscribe(this.getCourses);
 
+    this.store.pipe(select('totalNum'))
+      .subscribe(this.getTotalCoursesNum);
   }
 
   ngOnChanges(): void {

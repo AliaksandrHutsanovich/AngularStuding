@@ -153,6 +153,10 @@ const pageRoutes: Routes = [
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorInterceptor,
       multi: true,
+    }, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptorInterceptor,
+      multi: true,
     },
     {
       provide: APP_BASE_HREF,

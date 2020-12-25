@@ -1,3 +1,3 @@
 export { ICourse } from './course';
-export { EmailState, CoursesState } from './state';
+export { EmailState, CoursesState, CoursesTotalNumState } from './state';
 export { IUser } from './user';

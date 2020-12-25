@@ -10,7 +10,7 @@
       (onClicked)="onClicked($event)"
       [course]="course"
     ></app-course>
-    <button (click)="handleLoadMore()" class="list-items-section__button load-button">
+    <button (click)="handleLoadMore()" *ngIf="searchedCourses.length < totalCoursesNum" class="list-items-section__button load-button">
       {{ "PAGES.COURSES.LOAD_MORE" | translate }}
     </button>
   </div>
