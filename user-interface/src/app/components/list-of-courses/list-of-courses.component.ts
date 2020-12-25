@@ -66,6 +66,7 @@ export class ListOfCoursesComponent implements OnInit,
   }
 
   getTotalCoursesNum = ({ num }) => {
+    console.log('num =', num);
     this.totalCoursesNum = num;
   }
 

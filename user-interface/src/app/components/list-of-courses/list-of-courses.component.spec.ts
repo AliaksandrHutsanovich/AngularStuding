@@ -42,6 +42,7 @@ describe('ListOfCoursesComponent', () => {
     [],
   );
   const courses = [course];
+  const num = 2;
 
   @Pipe({ name: 'translate' })
   class TranslatePipe implements PipeTransform {
@@ -80,7 +81,7 @@ describe('ListOfCoursesComponent', () => {
   beforeEach(async(() => {
     suscribeSpy = jasmine.createSpy('spy').and.callFake(
       (fn) => {
-        fn({ courses });
+        fn({ courses, num });
       },
     );
     httpSpy = jasmine.createSpyObj('HttpClient', [
@@ -151,7 +152,7 @@ describe('ListOfCoursesComponent', () => {
     hostComponent.value = 'value';
     hostFixture.detectChanges();
 
-    expect(suscribeSpy).toHaveBeenCalledTimes(2);
+    expect(suscribeSpy).toHaveBeenCalledTimes(4);
   });
 
   it('handleAddCourse should be called', () => {
@@ -165,6 +166,6 @@ describe('ListOfCoursesComponent', () => {
     const componentEl = fixture.nativeElement.querySelector('.load-button');
     componentEl.click();
 
-    expect(suscribeSpy).toHaveBeenCalledTimes(1);
+    expect(suscribeSpy).toHaveBeenCalledTimes(2);
   });
 });

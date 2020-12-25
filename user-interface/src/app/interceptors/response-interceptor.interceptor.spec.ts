@@ -8,9 +8,28 @@ import {
 
 import { ResponseInterceptorInterceptor, assign } from './response-interceptor.interceptor';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 describe('ResponseInterceptorInterceptor', () => {
   let interceptor: ResponseInterceptorInterceptor;
+  let storeSpy;
+  const spyDispatch = jasmine.createSpy();
+
+  beforeEach(() => {
+    storeSpy = jasmine.createSpyObj('Store', [
+      'dispatch',
+    ]);
+    storeSpy.dispatch.and.callFake(() => { spyDispatch(); });
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: Store, useValue: storeSpy },
+      ],
+    })
+  });
+
+  afterEach(() => {
+    spyDispatch.calls.reset();
+  });
 
   const httpResponseArrayBody = new HttpResponse({
     body: [{
@@ -21,7 +40,7 @@ describe('ResponseInterceptorInterceptor', () => {
       description: 'Learn about where you can find course description, what information thay include, how they work and details about various components about course description. Course description report information about a university of college`s classes. They are published both in course catalogs the outline degree requirements and in course schedules that contain for all courses offered during',
       topRated: true,
     }],
-    url: 'courses',
+    url: 'courses?/1',
   });
 
   const httpResponseObjectBody = new HttpResponse({
@@ -33,7 +52,7 @@ describe('ResponseInterceptorInterceptor', () => {
       description: 'Learn about where you can find course description, what information thay include, how they work and details about various components about course description. Course description report information about a university of college`s classes. They are published both in course catalogs the outline degree requirements and in course schedules that contain for all courses offered during',
       topRated: true,
     },
-    url: 'courses',
+    url: 'courses?/1',
   });
 
   const httpResponse = new HttpResponse({
@@ -79,11 +98,13 @@ describe('ResponseInterceptorInterceptor', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('assign should transform response body', () => {
-    assign(httpResponseArrayBody);
-    expect(typeof httpResponseArrayBody.body[0].creationDate).toEqual('object');
+  it('dispatch should be when body is of Array type', async () => {
+    await assign(storeSpy)(httpResponseArrayBody);
+    expect(spyDispatch).toHaveBeenCalled();
+  });
 
-    assign(httpResponseObjectBody);
-    expect(typeof httpResponseObjectBody.body.creationDate).toEqual('object');
+  it('dispatch should not be when body is not of Array type', async () => {
+    await assign(storeSpy)(httpResponseObjectBody);
+    expect(spyDispatch).not.toHaveBeenCalled();
   });
 });
