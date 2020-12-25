@@ -59,11 +59,12 @@
   border-radius: 5px;
   color: white;
   outline: none;
-  cursor: pointer;
 }
 
 .form__cancel {
   margin-left: 10px;
+  background-color: #769ee2;
+  cursor: pointer;
 }
 
 input::-webkit-inner-spin-button {
@@ -71,9 +72,11 @@ input::-webkit-inner-spin-button {
 }
 
 .disabled {
-  background-color: grey;
+  background-color: #e0dbdb;
+  cursor: not-allowed ;
 }
 
 .enabled {
   background-color: #9ecc9e;
+  cursor: pointer;
 }
