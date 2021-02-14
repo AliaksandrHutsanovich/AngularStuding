@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked, Input } from '@angular/core';
+import { Component, OnInit, AfterContentChecked, Input, ChangeDetectorRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AuthorsService } from 'src/app/services';
 
@@ -25,8 +25,9 @@ export class AuthorsComponent extends ValueAccessorBase<string[]>
   @Input() isError: boolean;
   constructor(
     private authorsService: AuthorsService,
+    cdr: ChangeDetectorRef,
   ) {
-    super();
+    super(cdr);
   }
 
   ngOnInit(): void {

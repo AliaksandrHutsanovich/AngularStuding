@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { ValueAccessorBase } from 'src/app/classes/value-accessor-base.class';
@@ -17,8 +17,8 @@ import { ValueAccessorBase } from 'src/app/classes/value-accessor-base.class';
 })
 export class InputDateComponent extends ValueAccessorBase<string> {
   @Input() isError: boolean;
-  constructor() {
-    super();
+  constructor(cdr: ChangeDetectorRef) {
+    super(cdr);
   }
 
   handleBlur(): void {

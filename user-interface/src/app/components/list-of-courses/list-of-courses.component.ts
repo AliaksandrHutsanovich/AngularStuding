@@ -9,12 +9,14 @@ import {
   AfterViewChecked,
   OnDestroy,
   Input,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Store, select } from '@ngrx/store';
 import { Course } from '../../entities';
-import { CoursesService, LoadService } from '../../services';
+import { LoadService } from '../../services';
 import { ConfirmDialogComponent } from '../confirm-dialog';
 import { makeCoursesRequest } from 'src/app/actions';
 import { State } from 'src/app/reducers';
@@ -22,7 +24,8 @@ import { State } from 'src/app/reducers';
 @Component({
   selector: 'app-list-of-courses',
   templateUrl: './list-of-courses.component.html',
-  styleUrls: ['./list-of-courses.component.css']
+  styleUrls: ['./list-of-courses.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListOfCoursesComponent implements OnInit,
    DoCheck, AfterContentInit, AfterContentChecked,
@@ -38,11 +41,11 @@ export class ListOfCoursesComponent implements OnInit,
   @Input() searchValue: string;
 
   constructor(
-    private coursesService: CoursesService,
     public dialog: MatDialog,
     private router: Router,
     private loadService: LoadService,
     private store: Store<State>,
+    private cdr: ChangeDetectorRef,
   ) {
     this.courses = [];
     this.searchedCourses = this.courses;
@@ -63,6 +66,7 @@ export class ListOfCoursesComponent implements OnInit,
   getCourses = ({ courses }) => {
     this.courses = courses;
     this.searchedCourses = courses;
+    this.cdr.detectChanges();
   }
 
   getTotalCoursesNum = ({ num }) => {

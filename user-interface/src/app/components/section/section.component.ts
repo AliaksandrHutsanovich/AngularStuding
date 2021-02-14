@@ -6,6 +6,7 @@ import {
   ElementRef,
   AfterViewInit,
   OnDestroy,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import {
   Subscription,
@@ -22,7 +23,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-section',
   templateUrl: './section.component.html',
-  styleUrls: ['./section.component.css']
+  styleUrls: ['./section.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SectionComponent implements AfterViewInit, OnDestroy {
   private subscription: Subscription;

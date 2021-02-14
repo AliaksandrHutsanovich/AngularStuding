@@ -1,8 +1,11 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
 export class ValueAccessorBase<T> implements ControlValueAccessor {
   protected innerValue: T;
 
+  constructor(private cdr: ChangeDetectorRef) {
+  }
   private changed = new Array<(value: T) => void>();
   private touched = new Array<() => void>();
 
@@ -24,6 +27,7 @@ export class ValueAccessorBase<T> implements ControlValueAccessor {
 
   writeValue(value: T) {
     this.innerValue = value;
+    this.cdr.detectChanges();
   }
 
   registerOnChange(fn: (value: T) => void) {

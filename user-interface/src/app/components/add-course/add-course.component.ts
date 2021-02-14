@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
@@ -11,7 +11,8 @@ import { State } from 'src/app/reducers';
 @Component({
   selector: 'app-add-course',
   templateUrl: './add-course.component.html',
-  styleUrls: ['./add-course.component.css']
+  styleUrls: ['./add-course.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddCourseComponent implements OnInit {
   id: number;
@@ -27,6 +28,7 @@ export class AddCourseComponent implements OnInit {
     private loadService: LoadService,
     private store: Store<State>,
     private translateService: TranslateService,
+    private cdr: ChangeDetectorRef,
   ) {
     this.course = new Course(null, null, null, null, null, false, []);
     this.activatedRoute.params.subscribe(params => {
@@ -53,6 +55,7 @@ export class AddCourseComponent implements OnInit {
         (course) => {
           this.course = course;
           this.courseTitleTag = this.course.title;
+          this.cdr.detectChanges();
           this.loadService.updateShow(false);
         },
       );
