@@ -1,0 +1,33 @@
+<div class="item" bordered [date]="course.creationDate" [ngClass]={pink:course.topRated}>
+  <div class="item__head-section">
+    <h3 (click)="goToCoursePage(course)">{{course.title | uppercase}}</h3>
+    <div *ngIf="course.topRated" class="item__image-wrapper" [ngClass]={pink:course.topRated}>
+      <img src="assets/images/star-icon.png" alt="star">
+    </div>
+    <div class="item__timestamp-wrapper">
+      <div class="item__timestamp">
+        <img src="assets/images/clock-icon.png" alt="clock">
+        <p>{{course.duration | transformTime}}</p>
+      </div>
+      <div class="item__timestamp">
+        <img src="assets/images/calendar-icon.png" alt="calendar">
+        <p>{{course.creationDate | date}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="item__content">
+    <div class="item__text">
+      <p>{{course.description}}</p>
+    </div>
+    <div class="item__actions">
+      <button (click)="handleEditCourse()">
+        <img src="assets/images/edit-icon.png" alt="edit-icon">
+        <p>{{ "PAGES.COURSES.COURSE.EDIT" | translate }}</p>
+      </button>
+      <button (click)="handleClick(course.id)">
+        <img src="assets/images/delete-icon.png" alt="delete-icon">
+        <p>{{ "PAGES.COURSES.COURSE.DELETE" | translate }}</p>
+      </button>
+    </div>
+  </div>
+</div>

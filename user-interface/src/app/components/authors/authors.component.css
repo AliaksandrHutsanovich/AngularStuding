@@ -1,0 +1,33 @@
+.form__field {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.form__field-title-wrapper {
+  display: flex;
+}
+
+.form__field-title-wrapper > p {
+  font: bold 15px Arial;
+  margin: 10px 0;
+}
+
+.form__field-values-wrapper {
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3px 0;
+  background-color: white;
+}
+
+.form__field-values-wrapper > input {
+  width: 20%;
+  height: 30px;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+
+.error {
+  border: 1px solid red;
+}

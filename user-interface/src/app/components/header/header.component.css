@@ -1,0 +1,93 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+}
+
+.logo {
+  display: flex;
+  padding: 5px 30px;
+}
+
+@media (max-width: 440px) {
+  .logo {
+    padding: 5px 0;
+  }
+}
+
+.logo > img {
+  height: 50px;
+  width: 50px;
+}
+
+.logo > span {
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font: 15px Arial;
+}
+
+@media (max-width: 380px) {
+  .logo > span {
+    padding: 0 0;
+  }
+}
+
+.menu {
+  display: flex;
+}
+
+.menu__text {
+  color: white;
+  font: 12px Arial;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 30px;
+}
+
+@media (max-width: 505px) {
+  .menu__text {
+    display: none;
+  }
+}
+
+.menu__text > span:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: url(../../../assets/images/user-login.png) no-repeat;
+  background-size: 20px 20px;
+  position: absolute;
+  margin-left: -23px;
+  margin-top: -2px;
+}
+
+.menu__button {
+  border: none;
+  background-color: black;
+  color: white;
+  padding: 0 30px;
+  cursor: pointer;
+}
+
+.menu__button > span:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: url(../../../assets/images/log-off.png) no-repeat;
+  background-size: 20px 20px;
+  position: absolute;
+  margin-left: -23px;
+  margin-top: -2px;
+}
+
+select, option {
+  cursor: pointer;
+}
+
+select {
+  background-color: black;
+  color: white;
+}
